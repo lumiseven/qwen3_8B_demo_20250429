@@ -14,6 +14,24 @@ cd ~/D2/qwen
 vllm serve Qwen3-8B --dtype=half --enable-reasoning --reasoning-parser deepseek_r1 --max_model_len=15840 --gpu_memory_utilization=0.91
 ```
 
+## 使用sglang 启动
+
+```sh
+uv pip install "sglang[all]>=0.4.6"
+```
+
+```sh
+sudo apt install gcc-11 g++-11
+sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-11 110
+sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-11 110
+```
+
+```sh
+cd ~/D2/qwen
+python -m sglang.launch_server --model-path Qwen3-8B --reasoning-parser qwen3 --host 0.0.0.0
+# default port 30000
+```
+
 ## curl 测试
 
 ```sh
